@@ -2,12 +2,21 @@
 
 .tableContainer {
   background-color: var(--color-primary);
-  margin: 0 auto;
+  width: 100%;
   text-align: left;
+  border-radius: 1rem;
 }
 
 .tableContainer thead {
   background-color: var(--color-secondary);
+}
+
+.tableContainer tr > th:first-of-type {
+  border-radius: 1rem 0 0 0;
+}
+
+.tableContainer tr > th:last-of-type {
+  border-radius: 0 1rem 0 0;
 }
 
 .tableContainer th {

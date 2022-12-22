@@ -1,0 +1,4 @@
+.pagintaionContainer {
+  display: flex;
+  justify-content: space-between;
+}

@@ -1,11 +1,12 @@
 import { useContext, useState } from 'react'
 import { CharacterContext } from '../contexts/CharactersContext'
+import styles from '../css/Pagination.module.css'
 
 export default function Pagination() {
   const { info, requestPage } = useContext(CharacterContext)
 
   return (
-    <div>
+    <div className={styles.pagintaionContainer}>
       <button
         disabled={info.prev === null ? true : false}
         onClick={() => {

@@ -4,13 +4,12 @@ import Pagination from './components/Pagination'
 import SearchFilters from './components/SearchFilters'
 
 function App() {
-
   return (
-    <>
-    <SearchFilters />
-    <CharactersTable />
-    <Pagination />
-    </>
+    <main>
+      <SearchFilters />
+      <CharactersTable />
+      <Pagination />
+    </main>
   )
 }
 

@@ -9,3 +9,12 @@
   background-color: #0f172a;
   color: #f8fafc;
 }
+
+main {
+  max-width: 700px;
+  margin: 4rem auto;
+}
+
+main > * + * {
+  margin-top: 1rem;
+}

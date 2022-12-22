@@ -13,17 +13,25 @@ export const CharacterProvider = ({ children }) => {
     setInfo(data.info)
   }
 
+  const requestCharacters = async (
+    url = 'https://rickandmortyapi.com/api/character'
+  ) => {
+    const res = await fetch(url)
+    const data = await res.json()
+    setCharacters(data.results)
+    setInfo(data.info)
+  }
+
   useEffect(() => {
     ;(async function () {
-      const res = await fetch('https://rickandmortyapi.com/api/character')
-      const data = await res.json()
-      setCharacters(data.results)
-      setInfo(data.info)
+      const data = await requestCharacters()
     })()
   }, [])
 
   return (
-    <CharacterContext.Provider value={{ characters, info, requestPage }}>
+    <CharacterContext.Provider
+      value={{ characters, info, requestPage, requestCharacters }}
+    >
       {children}
     </CharacterContext.Provider>
   )
