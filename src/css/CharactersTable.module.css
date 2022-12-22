@@ -1,0 +1,37 @@
+@import './vars.css';
+
+.tableContainer {
+  background-color: var(--color-primary);
+  margin: 0 auto;
+  text-align: left;
+}
+
+.tableContainer thead {
+  background-color: var(--color-secondary);
+}
+
+.tableContainer th {
+  padding: 0.5rem 1rem;
+}
+
+.tableContainer td {
+  padding: 0.5rem 1rem;
+}
+
+.characterThumbnailContainer {
+  width: 4rem;
+  height: 4rem;
+}
+
+.characterThumbnailContainer img {
+  max-width: 100%;
+  width: 100%;
+  border-radius: 999em;
+  height: 100%;
+  object-fit: cover;
+}
+
+.characterNameContainer {
+  display: flex;
+  gap: 1rem;
+}

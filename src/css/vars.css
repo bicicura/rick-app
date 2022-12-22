@@ -1,0 +1,11 @@
+:root {
+  --color-primary: #1e293b;
+  --color-secondary: #4b5563;
+
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  background-color: #0f172a;
+  color: #f8fafc;
+}
