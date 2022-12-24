@@ -6,7 +6,18 @@ export const CharacterProvider = ({ children }) => {
   const [characters, setCharacters] = useState([])
   const [info, setInfo] = useState([])
 
-  const requestPage = async (url) => {
+  const requestPage = async (e) => {
+    let url
+    switch (e.target.dataset.page) {
+      case 'prev':
+        url = info.prev;
+        break;
+
+      case 'next':
+        url = info.next;
+        break;      
+    }
+
     const res = await fetch(url)
     const data = await res.json()
     setCharacters(data.results)
@@ -22,6 +33,7 @@ export const CharacterProvider = ({ children }) => {
     setInfo(data.info)
   }
 
+  // initial render request
   useEffect(() => {
     ;(async function () {
       const data = await requestCharacters()

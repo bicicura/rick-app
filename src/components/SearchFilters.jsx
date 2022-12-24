@@ -34,7 +34,10 @@ export default function SearchFilters() {
           Find
         </button>
       </div>
-      <input type="checkbox" />
+      <label htmlFor="favorites">
+        Favorites
+        <input type="checkbox" id="favorites" />
+      </label>
     </div>
   )
 }
