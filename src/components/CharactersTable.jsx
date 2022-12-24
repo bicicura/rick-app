@@ -6,7 +6,7 @@ import { useLocalStorage } from '../hooks/useLocalStorage'
 
 export default function CharactersTable() {
   const { characters } = useContext(CharacterContext)
-  const [favorites, toggleFavorites] = useLocalStorage()
+  const [favorites, toggleFavorites, isFavorite] = useLocalStorage()
 
   return (
     <table className={styles.tableContainer}>
@@ -27,6 +27,7 @@ export default function CharactersTable() {
               character={character}
               key={character.id}
               toggleFavorites={toggleFavorites}
+              isFavorite={isFavorite}
             />
           ))
         ) : (

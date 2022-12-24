@@ -5,6 +5,7 @@ import styles from '../css/CharactersTable.module.css'
 export default function CharacterRow(props) {
   const { characters } = useContext(CharacterContext)
   const toggleFavorites = props.toggleFavorites
+  const isFavorite = props.isFavorite
 
   const { image, name, species, status, id } = props.character
 
@@ -26,7 +27,7 @@ export default function CharacterRow(props) {
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            fill="none"
+            fill={isFavorite(id) ? 'yellow' : 'none'}
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"

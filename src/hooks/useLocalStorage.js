@@ -25,5 +25,7 @@ export function useLocalStorage(id) {
     }
   }
 
-  return [favorites, toggleFavorites]
+  const isFavorite = (id) => favorites.includes(id)
+
+  return [favorites, toggleFavorites, isFavorite]
 }
