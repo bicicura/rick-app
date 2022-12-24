@@ -1,9 +1,17 @@
 import { useState, useEffect } from 'react'
+import { useFirstRender } from './useFirstRender'
 
 export function useLocalStorage(id) {
   const [favorites, setFavorites] = useState([])
+  const isFirstRender = useFirstRender()
 
   useEffect(() => {
+    if (isFirstRender) {
+      const storedFavorites = JSON.parse(localStorage.getItem('favorites'))
+      return storedFavorites === null
+        ? localStorage.setItem('favorites', JSON.stringify(favorites))
+        : setFavorites(storedFavorites)
+    }
     localStorage.setItem('favorites', JSON.stringify(favorites))
   }, [favorites])
 

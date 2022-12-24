@@ -1,6 +1,7 @@
-import { useContext, useEffect, useState } from 'react'
+import { useContext } from 'react'
 import { CharacterContext } from '../contexts/CharactersContext'
 import styles from '../css/CharactersTable.module.css'
+import CharacterRow from './CharacterRow'
 import { useLocalStorage } from '../hooks/useLocalStorage'
 
 export default function CharactersTable() {
@@ -21,26 +22,12 @@ export default function CharactersTable() {
       </thead>
       <tbody>
         {characters ? (
-          characters.map(({ id, name, species, status, image }) => (
-            <tr key={id}>
-              <td className={styles.characterNameContainer}>
-                <div className={styles.characterThumbnailContainer}>
-                  <img src={image} />
-                </div>
-                <h3>{name}</h3>
-              </td>
-              <td>{species}</td>
-              <td>{status}</td>
-              <td>
-                <button
-                  onClick={() => {
-                    toggleFavorites(id)
-                  }}
-                >
-                  +
-                </button>
-              </td>
-            </tr>
+          characters.map((character) => (
+            <CharacterRow
+              character={character}
+              key={character.id}
+              toggleFavorites={toggleFavorites}
+            />
           ))
         ) : (
           <tr>
