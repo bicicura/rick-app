@@ -1,4 +1,5 @@
 import { useContext, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { CharacterContext } from '../contexts/CharactersContext'
 import styles from '../css/CharactersTable.module.css'
 
@@ -10,12 +11,14 @@ export default function CharacterRow(props) {
   const { image, name, species, status, id } = props.character
 
   return (
-    <tr>
-      <td className={styles.characterNameContainer}>
-        <div className={styles.characterThumbnailContainer}>
-          <img src={image} />
-        </div>
-        <h3>{name}</h3>
+    <tr className={styles.CharacterRow}>
+      <td>
+        <Link className={styles.characterNameContainer} to={`/character/${id}`}>
+          <div className={styles.characterThumbnailContainer}>
+            <img src={image} />
+          </div>
+          <h3>{name}</h3>
+        </Link>
       </td>
       <td>{species}</td>
       <td>{status}</td>

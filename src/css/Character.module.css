@@ -1,0 +1,10 @@
+.goBackBtn {
+  display: flex;
+  color: #6b7280;
+}
+
+.goBackBtn svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  fill: #6b7280;
+}

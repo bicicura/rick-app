@@ -8,27 +8,29 @@ export default function Pagination() {
   return (
     characters && (
       <div className={styles.pagintaionContainer}>
-      <button
-        disabled={info.prev === null ? true : false}
-        data-page="prev"
-        onClick={(e) => {
-          requestPage(e)
-        }}
-        type="button"
-      >
-        Previous
-      </button>
-      <button
-        disabled={info.next === null ? true : false}
-        data-page="next"
-        onClick={(e) => {
-          requestPage(e)
-        }}
-        type="button"
-      >
-        Next
-      </button>
-    </div>
+        <button
+          className={styles.PaginationButton}
+          disabled={info.prev === null ? true : false}
+          data-page="prev"
+          onClick={(e) => {
+            requestPage(e)
+          }}
+          type="button"
+        >
+          Previous
+        </button>
+        <button
+          className={styles.PaginationButton}
+          disabled={info.next === null ? true : false}
+          data-page="next"
+          onClick={(e) => {
+            requestPage(e)
+          }}
+          type="button"
+        >
+          Next
+        </button>
+      </div>
     )
   )
 }

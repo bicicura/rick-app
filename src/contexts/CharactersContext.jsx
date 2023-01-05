@@ -10,12 +10,12 @@ export const CharacterProvider = ({ children }) => {
     let url
     switch (e.target.dataset.page) {
       case 'prev':
-        url = info.prev;
-        break;
+        url = info.prev
+        break
 
       case 'next':
-        url = info.next;
-        break;      
+        url = info.next
+        break
     }
 
     const res = await fetch(url)

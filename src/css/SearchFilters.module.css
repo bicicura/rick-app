@@ -1,6 +1,14 @@
+@import './vars.css';
+
 .SearchFiltersContainer {
   width: 100%;
   display: flex;
   align-content: center;
   justify-content: space-between;
+}
+
+.SearchFilterInputContainer {
+  background-color: var(--color-white);
+  padding: 0.5rem 1rem;
+  border-radius: 0.4rem;
 }

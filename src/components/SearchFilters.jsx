@@ -10,34 +10,31 @@ export default function SearchFilters() {
     setName(e.target.value)
   }
 
-  const handleRequest = () => {
+  const handleRequest = (e) => {
+    e.preventDefault()
     requestCharacters(
       `https://rickandmortyapi.com/api/character/?page=2&name=${name}`
     )
   }
 
   return (
-    <div className={styles.SearchFiltersContainer}>
-      <div>
+    <form
+      onSubmit={(e) => handleRequest(e)}
+      className={styles.SearchFiltersContainer}
+    >
+      <div className={styles.SearchFilterInputContainer}>
         <input
           onChange={(e) => handleName(e)}
           value={name}
           type="text"
           placeholder="Search by name..."
         />
-        <button
-          onClick={() => {
-            handleRequest()
-          }}
-          type="button"
-        >
-          Find
-        </button>
+        <button>Enter</button>
       </div>
       <label htmlFor="favorites">
         Favorites
         <input type="checkbox" id="favorites" />
       </label>
-    </div>
+    </form>
   )
 }

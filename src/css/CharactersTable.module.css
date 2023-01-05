@@ -1,14 +1,14 @@
 @import './vars.css';
 
 .tableContainer {
-  background-color: var(--color-primary);
+  background-color: var(--color-white);
   width: 100%;
   text-align: left;
   border-radius: 1rem;
 }
 
 .tableContainer thead {
-  background-color: var(--color-secondary);
+  background-color: var(--color-gray-200);
 }
 
 .tableContainer tr > th:first-of-type {
@@ -19,8 +19,17 @@
   border-radius: 0 1rem 0 0;
 }
 
+.CharacterRow + .CharacterRow {
+  border-top: 1px solid var(--color-gray-300);
+}
+
 .tableContainer th {
   padding: 0.5rem 1rem;
+  font-weight: 400;
+  font-size: 0.75rem;
+  color: var(--color-gray-800);
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
 }
 
 .tableContainer td {
