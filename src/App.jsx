@@ -1,14 +1,15 @@
 import './App.css'
+import { Route, Routes } from 'react-router-dom'
+import Character from './components/Character'
 import CharactersTable from './components/CharactersTable'
-import Pagination from './components/Pagination'
-import SearchFilters from './components/SearchFilters'
 
 function App() {
   return (
     <main>
-      <SearchFilters />
-      <CharactersTable />
-      <Pagination />
+      <Routes>
+        <Route path="/" element={<CharactersTable />} />
+        <Route path="/character/:id" element={<Character />} />
+      </Routes>
     </main>
   )
 }
