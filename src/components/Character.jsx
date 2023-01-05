@@ -27,21 +27,22 @@ export default function Character() {
         </div>
       </Link>
       <section>
-        <div>
-          <div>
-            <img src="" alt="" />
+        <div className={styles.CharacterCard}>
+          <div className={styles.CharacterCardHeader}>
+            <div className={styles.CharacterImageContainer}>
+              <img src={character.image} alt="" />
+            </div>
             <div>
-              <div className="flex items-center gap-3">
+              <div className={styles.CharacterHeaderTitle}>
                 <h1 className="text-2xl font-bold leading-7 text-black">
-                  Rick Sanchez s
+                  {character.name}
                 </h1>
-                <span className="inline-flex px-2 text-xs font-semibold leading-5 text-green-800 capitalize bg-green-100 rounded-full">
-                  Alive
+                <span className={styles.CharacterStatusTag}>
+                  {character.status}
                 </span>
               </div>
               <h3 className="text-sm tracking-tight text-gray-500">
-                {/* Record created {createdDate} */}
-                Record created 1399 days ago.
+                Record created {character.created} days ago.
               </h3>
             </div>
           </div>
@@ -64,6 +65,52 @@ export default function Character() {
                 />
               </svg>
             </button>
+          </div>
+          <div className={styles.CharacterInformationContainer}>
+            <div>
+              <h3 className={styles.CharacterInformationTitle}>Full Name</h3>
+              <p className="text-lg">{character.name}</p>
+            </div>
+            <div>
+              <h3 className={styles.CharacterInformationTitle}>Type</h3>
+              <p className="text-lg">{character.type}</p>
+            </div>
+            <div>
+              <h3 className={styles.CharacterInformationTitle}>Gender</h3>
+              <p className="text-lg">{character.gender}</p>
+            </div>
+            <div>
+              <h3 className={styles.CharacterInformationTitle}>Location</h3>
+              <p className="text-lg">{character.location?.name}</p>
+            </div>
+            <div className="col-span-2">
+              <div>
+                <ul>
+                  <li className="relative">
+                    <button type="button" className="w-full text-right">
+                      <div className="w-full transition-all flex items-center gap-0.5">
+                        <h3 className="text-sm font-bold leading-5 tracking-tight text-left text-gray-500 hover:underline">
+                          Show Episodes
+                        </h3>
+                        <svg
+                          className="w-4 h-4 transition-transform duration-150 ease-in-out"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                          strokeWidth="1"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M19 9l-7 7-7-7"
+                          />
+                        </svg>
+                      </div>
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </section>

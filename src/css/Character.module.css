@@ -1,3 +1,5 @@
+@import './vars.css';
+
 .goBackBtn {
   display: flex;
   color: #6b7280;
@@ -7,4 +9,66 @@
   width: 1.5rem;
   height: 1.5rem;
   fill: #6b7280;
+}
+
+.CharacterCard {
+  background-color: var(--color-white);
+  border-radius: 0.8rem;
+}
+
+.CharacterImageContainer {
+  width: 7.5rem;
+  height: 7.5rem;
+  border-radius: 100%;
+  overflow: hidden;
+}
+
+.CharacterImageContainer img {
+  width: 100%;
+  object-fit: cover;
+  max-width: 100%;
+}
+
+.CharacterCardHeader {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+}
+
+.CharacterHeaderTitle {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.CharacterHeaderTitle h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.CharacterStatusTag {
+  display: inline-flex;
+  padding-inline: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1.25rem;
+  border-radius: 999em;
+  background-color: var(--color-green-200);
+  color: var(--color-green-500);
+}
+
+.CharacterInformationContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4;
+}
+
+.CharacterInformationTitle {
+  font-size: 0.85rem;
+  font-weight: 700;
+  line-height: 1.25rem;
+  letter-spacing: -0.025em;
+  text-align: left;
+  color: var(--color-gray-800);
 }

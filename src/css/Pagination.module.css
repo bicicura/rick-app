@@ -7,7 +7,7 @@
 
 .PaginationButton {
   background-color: var(--color-blue);
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 0.7rem;
   border-radius: 0.5rem;
   color: var(--color-white);
   cursor: pointer;
