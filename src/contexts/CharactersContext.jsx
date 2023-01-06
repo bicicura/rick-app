@@ -7,7 +7,7 @@ export const CharacterProvider = ({ children }) => {
   const [characters, setCharacters] = useState([])
   const [info, setInfo] = useState([])
   const [favoritesList, setFavoritesList] = useState(false)
-  const [favorites] = useLocalStorage()
+  const [favorites, toggleFavorites, isFavorite] = useLocalStorage()
 
   const requestPage = async (e) => {
     let url
@@ -25,6 +25,12 @@ export const CharacterProvider = ({ children }) => {
     const data = await res.json()
     setCharacters(data.results)
     setInfo(data.info)
+
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    })
   }
 
   const requestCharacters = async (
@@ -35,13 +41,6 @@ export const CharacterProvider = ({ children }) => {
     setCharacters(data.results)
     setInfo(data.info)
   }
-
-  // initial render request
-  useEffect(() => {
-    ;(async function () {
-      const data = await requestCharacters()
-    })()
-  }, [])
 
   useEffect(() => {
     ;(async function () {
@@ -56,6 +55,13 @@ export const CharacterProvider = ({ children }) => {
     })()
   }, [favoritesList])
 
+  // initial render request
+  useEffect(() => {
+    ;(async function () {
+      const data = await requestCharacters()
+    })()
+  }, [])
+
   return (
     <CharacterContext.Provider
       value={{
@@ -65,6 +71,9 @@ export const CharacterProvider = ({ children }) => {
         requestCharacters,
         setFavoritesList,
         favoritesList,
+        favorites,
+        toggleFavorites,
+        isFavorite,
       }}
     >
       {children}

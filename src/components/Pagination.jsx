@@ -4,28 +4,8 @@ import styles from '../css/Pagination.module.css'
 
 export default function Pagination() {
   const { info, requestPage, characters } = useContext(CharacterContext)
-  const [isScrolling, setIsScrolling] = useState(false)
 
-  const handleDisabled = () => {
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: 'smooth',
-    })
-
-    if (info.prev === null) {
-      return true
-    }
-    return false
-  }
-
-  useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: 'smooth',
-    })
-  }, [isScrolling])
+  const handleDisabled = () => (info.prev === null ? true : false)
 
   return (
     characters && (

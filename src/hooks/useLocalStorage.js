@@ -13,6 +13,7 @@ export function useLocalStorage(id) {
         : setFavorites(storedFavorites)
     }
     localStorage.setItem('favorites', JSON.stringify(favorites))
+    console.log(favorites)
   }, [favorites])
 
   const toggleFavorites = (id) => {

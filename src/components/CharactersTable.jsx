@@ -2,13 +2,12 @@ import { useContext } from 'react'
 import { CharacterContext } from '../contexts/CharactersContext'
 import styles from '../css/CharactersTable.module.css'
 import CharacterRow from './CharacterRow'
-import { useLocalStorage } from '../hooks/useLocalStorage'
 import Pagination from './Pagination'
 import SearchFilters from './SearchFilters'
 
 export default function CharactersTable() {
-  const { characters } = useContext(CharacterContext)
-  const [favorites, toggleFavorites, isFavorite] = useLocalStorage()
+  const { characters, toggleFavorites, isFavorite } =
+    useContext(CharacterContext)
 
   return (
     <>
