@@ -10,6 +10,17 @@ export default function CharacterRow(props) {
 
   const { image, name, species, status, id } = props.character
 
+  const handleStatus = (status) => {
+    switch (status) {
+      case 'Alive':
+        return styles.alive
+      case 'Dead':
+        return styles.dead
+      default:
+        return styles.unknown
+    }
+  }
+
   return (
     <tr className={styles.CharacterRow}>
       <td>
@@ -21,7 +32,13 @@ export default function CharacterRow(props) {
         </Link>
       </td>
       <td>{species}</td>
-      <td>{status}</td>
+      <td>
+        <span
+          className={[`${styles.CharacterStatusTag} ${handleStatus(status)}`]}
+        >
+          {status}
+        </span>
+      </td>
       <td>
         <button
           onClick={() => {
@@ -34,7 +51,6 @@ export default function CharacterRow(props) {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="w-6 h-6"
             style={{ width: '1.5rem', heigth: '1.5rem' }}
           >
             <path
