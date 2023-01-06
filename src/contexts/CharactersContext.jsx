@@ -38,20 +38,30 @@ export const CharacterProvider = ({ children }) => {
   ) => {
     const res = await fetch(url)
     const data = await res.json()
-    setCharacters(data.results)
-    setInfo(data.info)
+
+    if (data.info) setInfo(data.info)
+
+    // differents respones we may get from API, this contemplates if the results has no info, if res is only one character or if it has multiple and info attached
+    return Array.isArray(data)
+      ? setCharacters(data)
+      : data.hasOwnProperty('name')
+      ? setCharacters([data])
+      : setCharacters(data.results)
   }
 
+  // Request favorites when favoritesList is true
   useEffect(() => {
     ;(async function () {
       if (favoritesList) {
-        const res = await fetch(
+        if (favorites.length === 0) {
+          return setCharacters([])
+        }
+
+        return await requestCharacters(
           `https://rickandmortyapi.com/api/character/${favorites.toString()}`
         )
-        const data = await res.json()
-        return setCharacters(data)
       }
-      const data = await requestCharacters()
+      return await requestCharacters()
     })()
   }, [favoritesList])
 

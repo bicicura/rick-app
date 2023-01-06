@@ -24,7 +24,7 @@ export default function CharactersTable() {
           </tr>
         </thead>
         <tbody>
-          {characters ? (
+          {characters.length > 0 ? (
             characters.map((character) => (
               <CharacterRow
                 character={character}
