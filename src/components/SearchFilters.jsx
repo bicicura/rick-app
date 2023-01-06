@@ -4,11 +4,12 @@ import styles from '../css/SearchFilters.module.css'
 
 export default function SearchFilters() {
   const [name, setName] = useState('')
-  const { requestCharacters } = useContext(CharacterContext)
+  const { requestCharacters, setFavoritesList, favoritesList } =
+    useContext(CharacterContext)
 
-  const handleName = async (e) => {
-    setName(e.target.value)
-  }
+  const handleName = async (e) => setName(e.target.value)
+
+  const handleFavorites = (e) => setFavoritesList(e.target.checked)
 
   const handleRequest = (e) => {
     e.preventDefault()
@@ -33,7 +34,11 @@ export default function SearchFilters() {
       </div>
       <label htmlFor="favorites">
         Favorites
-        <input type="checkbox" id="favorites" />
+        <input
+          onChange={(e) => handleFavorites(e)}
+          type="checkbox"
+          id="favorites"
+        />
       </label>
     </form>
   )
