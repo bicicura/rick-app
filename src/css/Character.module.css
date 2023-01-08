@@ -29,11 +29,17 @@
   max-width: 100%;
 }
 
+.CharacterCardHeaderContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem;
+}
+
 .CharacterCardHeader {
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding: 1.5rem;
 }
 
 .CharacterHeaderTitle {
@@ -71,4 +77,13 @@
   letter-spacing: -0.025em;
   text-align: left;
   color: var(--color-gray-800);
+}
+
+.CharacterFavoriteButton {
+}
+
+.CharacterFavoriteButton svg {
+  width: 2.5rem;
+  height: 2.5rem;
+  stroke: var(--color-gray-800);
 }

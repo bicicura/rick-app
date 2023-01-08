@@ -1,9 +1,12 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import styles from '../css/Character.module.css'
+import { CharacterContext } from '../contexts/CharactersContext'
 
 export default function Character() {
   const { id } = useParams()
+  const { favorites, toggleFavorites, isFavorite } =
+    useContext(CharacterContext)
 
   const [character, setCharacter] = useState({})
 
@@ -11,7 +14,6 @@ export default function Character() {
     ;(async () => {
       const res = await fetch(`https://rickandmortyapi.com/api/character/${id}`)
       const data = await res.json()
-      console.log(data)
       setCharacter(data)
     })()
   }, [])
@@ -28,43 +30,39 @@ export default function Character() {
       </Link>
       <section>
         <div className={styles.CharacterCard}>
-          <div className={styles.CharacterCardHeader}>
-            <div className={styles.CharacterImageContainer}>
-              <img src={character.image} alt="" />
+          <div className={styles.CharacterCardHeaderContainer}>
+            <div className={styles.CharacterCardHeader}>
+              <div className={styles.CharacterImageContainer}>
+                <img src={character.image} alt="" />
+              </div>
+              <div>
+                <div className={styles.CharacterHeaderTitle}>
+                  <h1>{character.name}</h1>
+                  <span className={styles.CharacterStatusTag}>
+                    {character.status}
+                  </span>
+                </div>
+                <h3>Record created {character.created} days ago.</h3>
+              </div>
             </div>
             <div>
-              <div className={styles.CharacterHeaderTitle}>
-                <h1 className="text-2xl font-bold leading-7 text-black">
-                  {character.name}
-                </h1>
-                <span className={styles.CharacterStatusTag}>
-                  {character.status}
-                </span>
-              </div>
-              <h3 className="text-sm tracking-tight text-gray-500">
-                Record created {character.created} days ago.
-              </h3>
-            </div>
-          </div>
-          <div>
-            <button
-              className={
-                'text-yellow-300 transition-colors duration-150 ease-in-out cursor-pointer hover:text-yellow-300'
-              }
-            >
-              <svg
-                className="w-10 h-10 stroke-gray-800"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-                strokeWidth="1"
+              <button
+                className={styles.CharacterFavoriteButton}
+                onClick={() => toggleFavorites(id)}
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"
-                />
-              </svg>
-            </button>
+                <svg
+                  fill={isFavorite(id) ? 'yellow' : 'none'}
+                  viewBox="0 0 24 24"
+                  strokeWidth="1"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"
+                  />
+                </svg>
+              </button>
+            </div>
           </div>
           <div className={styles.CharacterInformationContainer}>
             <div>

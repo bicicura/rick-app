@@ -16,6 +16,8 @@ export function useLocalStorage(id) {
   }, [favorites])
 
   const toggleFavorites = (id) => {
+    id = +id
+
     //    check if favorites includes id and if so, remove it
     if (favorites.includes(id)) {
       setFavorites(favorites.filter((favorite) => favorite !== id))
@@ -25,7 +27,7 @@ export function useLocalStorage(id) {
     }
   }
 
-  const isFavorite = (id) => favorites.includes(id)
+  const isFavorite = (id) => favorites.includes(+id)
 
   return [favorites, toggleFavorites, isFavorite]
 }
