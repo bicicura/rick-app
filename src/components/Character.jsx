@@ -9,6 +9,9 @@ export default function Character() {
     useContext(CharacterContext)
 
   const [character, setCharacter] = useState({})
+  const [showEpisodes, setShowEpisodes] = useState(false)
+
+  console.log(character)
 
   useEffect(() => {
     ;(async () => {
@@ -28,9 +31,9 @@ export default function Character() {
           <span>Characters list</span>
         </div>
       </Link>
-      <section>
+      <section className={styles.CharacterCardContainer}>
         <div className={styles.CharacterCard}>
-          <div className={styles.CharacterCardHeaderContainer}>
+          <header className={styles.CharacterCardHeaderContainer}>
             <div className={styles.CharacterCardHeader}>
               <div className={styles.CharacterImageContainer}>
                 <img src={character.image} alt="" />
@@ -63,53 +66,40 @@ export default function Character() {
                 </svg>
               </button>
             </div>
-          </div>
+          </header>
           <div className={styles.CharacterInformationContainer}>
             <div>
               <h3 className={styles.CharacterInformationTitle}>Full Name</h3>
-              <p className="text-lg">{character.name}</p>
+              <p>{character.name}</p>
             </div>
             <div>
               <h3 className={styles.CharacterInformationTitle}>Type</h3>
-              <p className="text-lg">{character.type}</p>
+              <p>{character.type}</p>
             </div>
             <div>
               <h3 className={styles.CharacterInformationTitle}>Gender</h3>
-              <p className="text-lg">{character.gender}</p>
+              <p>{character.gender}</p>
             </div>
             <div>
               <h3 className={styles.CharacterInformationTitle}>Location</h3>
-              <p className="text-lg">{character.location?.name}</p>
-            </div>
-            <div className="col-span-2">
-              <div>
-                <ul>
-                  <li className="relative">
-                    <button type="button" className="w-full text-right">
-                      <div className="w-full transition-all flex items-center gap-0.5">
-                        <h3 className="text-sm font-bold leading-5 tracking-tight text-left text-gray-500 hover:underline">
-                          Show Episodes
-                        </h3>
-                        <svg
-                          className="w-4 h-4 transition-transform duration-150 ease-in-out"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                          strokeWidth="1"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M19 9l-7 7-7-7"
-                          />
-                        </svg>
-                      </div>
-                    </button>
-                  </li>
-                </ul>
-              </div>
+              <p>{character.location?.name}</p>
             </div>
           </div>
+          <footer>
+            <div>
+              <button onClick={() => setShowEpisodes(!showEpisodes)}>
+                Show episodes
+              </button>
+              <ul>
+                {showEpisodes &&
+                  character.episode.map((episode) => (
+                    <li>
+                      <a href={episode}>{episode}</a>
+                    </li>
+                  ))}
+              </ul>
+            </div>
+          </footer>
         </div>
       </section>
     </>

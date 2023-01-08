@@ -8,14 +8,11 @@ export default function SearchFilters() {
     useContext(CharacterContext)
 
   const handleName = async (e) => setName(e.target.value)
-
   const handleFavorites = (e) => setFavoritesList(e.target.checked)
 
   const handleRequest = (e) => {
     e.preventDefault()
-    requestCharacters(
-      `https://rickandmortyapi.com/api/character/?page=2&name=${name}`
-    )
+    requestCharacters(`https://rickandmortyapi.com/api/character/?name=${name}`)
   }
 
   return (
