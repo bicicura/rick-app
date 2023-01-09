@@ -2,6 +2,7 @@ import { useContext, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { CharacterContext } from '../contexts/CharactersContext'
 import styles from '../css/CharactersTable.module.css'
+import CharacterStatusTag from './CharacterStatusTag'
 
 export default function CharacterRow(props) {
   const { characters } = useContext(CharacterContext)
@@ -9,17 +10,6 @@ export default function CharacterRow(props) {
   const isFavorite = props.isFavorite
 
   const { image, name, species, status, id } = props.character
-
-  const handleStatus = (status) => {
-    switch (status) {
-      case 'Alive':
-        return styles.alive
-      case 'Dead':
-        return styles.dead
-      default:
-        return styles.unknown
-    }
-  }
 
   return (
     <tr className={styles.CharacterRow}>
@@ -33,11 +23,7 @@ export default function CharacterRow(props) {
       </td>
       <td>{species}</td>
       <td>
-        <span
-          className={[`${styles.CharacterStatusTag} ${handleStatus(status)}`]}
-        >
-          {status}
-        </span>
+        <CharacterStatusTag status={status} />
       </td>
       <td>
         <button

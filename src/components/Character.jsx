@@ -2,6 +2,7 @@ import { useEffect, useState, useContext } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import styles from '../css/Character.module.css'
 import { CharacterContext } from '../contexts/CharactersContext'
+import CharacterStatusTag from './CharacterStatusTag'
 
 export default function Character() {
   const { id } = useParams()
@@ -11,7 +12,13 @@ export default function Character() {
   const [character, setCharacter] = useState({})
   const [showEpisodes, setShowEpisodes] = useState(false)
 
-  console.log(character)
+  const handleStatus = () => {
+    return character.status === 'Alive'
+      ? styles.alive
+      : character.status === 'Dead'
+      ? styles.dead
+      : styles.unknown
+  }
 
   useEffect(() => {
     ;(async () => {
@@ -41,9 +48,7 @@ export default function Character() {
               <div>
                 <div className={styles.CharacterHeaderTitle}>
                   <h1>{character.name}</h1>
-                  <span className={styles.CharacterStatusTag}>
-                    {character.status}
-                  </span>
+                  <CharacterStatusTag status={character.status} />
                 </div>
                 <h3>Record created {character.created} days ago.</h3>
               </div>

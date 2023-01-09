@@ -42,13 +42,13 @@
 .CharacterCardHeader {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 .CharacterHeaderTitle {
   display: flex;
   align-items: center;
-  gap: 0.7rem;
+  gap: 1rem;
 }
 
 .CharacterHeaderTitle h1 {
@@ -56,21 +56,10 @@
   font-weight: 700;
 }
 
-.CharacterStatusTag {
-  display: inline-flex;
-  padding-inline: 0.5rem;
-  font-size: 0.8rem;
-  font-weight: 700;
-  line-height: 1.25rem;
-  border-radius: 999em;
-  background-color: var(--color-green-200);
-  color: var(--color-green-500);
-}
-
 .CharacterInformationContainer {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 4;
+  gap: 1.5rem;
 }
 
 .CharacterInformationTitle {
@@ -86,7 +75,4 @@
   width: 2.5rem;
   height: 2.5rem;
   stroke: var(--color-gray-800);
-}
-
-.CharacterCard footer {
 }

@@ -56,25 +56,3 @@
   align-items: center;
   gap: 1rem;
 }
-
-.CharacterStatusTag {
-  display: inline-flex;
-  padding-inline: 0.5rem;
-  line-height: 1.25rem;
-  border-radius: 999em;
-}
-
-.CharacterStatusTag.alive {
-  background-color: var(--color-green-200);
-  color: var(--color-green-500);
-}
-
-.CharacterStatusTag.dead {
-  background-color: var(--color-red-200);
-  color: var(--color-red-500);
-}
-
-.CharacterStatusTag.unknown {
-  background-color: var(--color-gray-200);
-  color: var(--color-gray-800);
-}
